@@ -1,5 +1,5 @@
-const API_KEY = "cur_live_EXK4IIhB5mTbfIIiYxp44Z6gOuxUk00Sh8VM03zb";
-const BASE_URL = "https://api.currencyapi.com/v3/latest";
+
+
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
@@ -33,7 +33,7 @@ const updateExchangeRate = async () => {
     amount.value = "1";
   }
   // Build dynamic URL with selected currencies
-  const URL = `${BASE_URL}?apikey=${API_KEY}&base_currency=${fromCurr.value}&currencies=${toCurr.value}`;
+  const URL = `${process.env.BASE_URL}?apikey=${process.env.API_KEY}&base_currency=${fromCurr.value}&currencies=${toCurr.value}`;
   let response = await fetch(URL);
   let data = await response.json();
   let rate = data.data[toCurr.value].value;
